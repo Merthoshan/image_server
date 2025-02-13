@@ -95,21 +95,3 @@ port = 3000
 storage_path = "./uploads"
 ```
 
-## 📜 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🤝 Contributing
-
-Contributions are welcome! Please follow these steps:
-
-1. Fork the repository
-2. Create a new branch (`git checkout -b feature-xyz`)
-3. Commit your changes (`git commit -m 'Add feature xyz'`)
-4. Push to the branch (`git push origin feature-xyz`)
-5. Open a Pull Request
-
-## 📧 Contact
-
-For any issues or inquiries, please open an issue in the repository or reach out via email.
-
