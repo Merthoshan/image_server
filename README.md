@@ -38,21 +38,62 @@ cargo build --release
 cargo run --release
 ```
 
-The server will start and listen on `http://localhost:8080` by default.
+The server will start and listen on `http://localhost:3000` by default.
 
 ### API Endpoints
 
-Example using `curl`:
+| Route            | Method | Parameters                   | Description                           |
+|-----------------|--------|-----------------------------|---------------------------------------|
+| `/grayscale`    | POST   | None                        | Converts the image to grayscale.      |
+| `/invert`       | POST   | None                        | Inverts the colors of the image.      |
+| `/rotate90`     | POST   | None                        | Rotates the image 90 degrees.         |
+| `/blur`         | POST   | `sigma` (float)             | Applies a blur effect with intensity. |
+| `/brightness`   | POST   | `value` (int)               | Adjusts the brightness of the image.  |
+| `/contrast`     | POST   | `value` (float)             | Adjusts the contrast of the image.    |
+
+### Example Usage
+
+#### Convert Image to Grayscale
 
 ```sh
-curl -X POST --data-binary @"test.jpeg" "http://127.0.0.1:3000/contrast?value=10.0" --output contrast.jpeg
+curl -X POST --data-binary @"test.jpeg" "http://127.0.0.1:3000/grayscale" --output grayscale.jpeg
 ```
 
-This command:
-- Uses `http://127.0.0.1:3000` as the local server address and port.
-- Takes in `test.jpeg` as the input image.
-- Sends the request to the `/contrast` route with a query parameter `value=10.0`.
-- Outputs the processed image as `contrast.jpeg`.
+#### Apply Blur Effect
+
+```sh
+curl -X POST --data-binary @"test.jpeg" "http://127.0.0.1:3000/blur?sigma=2.0" --output blurred.jpeg
+```
+
+#### Adjust Brightness
+
+```sh
+curl -X POST --data-binary @"test.jpeg" "http://127.0.0.1:3000/brightness?value=10" --output brightened.jpeg
+```
+
+#### Adjust Contrast
+
+```sh
+curl -X POST --data-binary @"test.jpeg" "http://127.0.0.1:3000/contrast?value=1.5" --output contrast.jpeg
+```
+
+#### Rotate Image by 90 Degrees
+
+```sh
+curl -X POST --data-binary @"test.jpeg" "http://127.0.0.1:3000/rotate90" --output rotated.jpeg
+```
+
+## 🛠 Configuration
+
+You can modify the `config.toml` file to change settings like the server port and storage directory.
+
+Example:
+
+```toml
+[server]
+port = 3000
+storage_path = "./uploads"
+```
 
 ## 📜 License
 
