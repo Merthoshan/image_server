@@ -83,15 +83,4 @@ curl -X POST --data-binary @"test.jpeg" "http://127.0.0.1:3000/contrast?value=1.
 curl -X POST --data-binary @"test.jpeg" "http://127.0.0.1:3000/rotate90" --output rotated.jpeg
 ```
 
-## 🛠 Configuration
-
-You can modify the `config.toml` file to change settings like the server port and storage directory.
-
-Example:
-
-```toml
-[server]
-port = 3000
-storage_path = "./uploads"
-```
 
